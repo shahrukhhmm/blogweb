@@ -61,41 +61,49 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title><?php echo $page_title; ?></title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="css/font-awesome.css">
     <!-- Custom stlylesheet -->
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
 <!-- HEADER -->
 <div id="header">
+
     <!-- container -->
     <div class="container">
-        <!-- row -->
-        <div class="row">
-            <!-- LOGO -->
-            <div class=" col-md-offset-4 col-md-4">
-              <?php
-                include "config.php";
+    <nav class="navbar navbar-extend">
+      <?php
+          include "config.php";
 
-                $sql = "SELECT * FROM settings";
+          $sql = "SELECT * FROM settings";
 
-                $result = mysqli_query($conn, $sql) or die("Query Failed.");
-                if(mysqli_num_rows($result) > 0){
-                  while($row = mysqli_fetch_assoc($result)) {
-                    if($row['logo'] == ""){
-                      echo '<a href="index.php"><h1>'.$row['websitename'].'</h1></a>';
-                    }else{
-                      echo '<a href="index.php" id="logo"><img src="admin/images/'. $row['logo'] .'"></a>';
-                    }
+          $result = mysqli_query($conn, $sql) or die("Query Failed.");
+          if(mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_assoc($result)) {
+              if($row['logo'] == ""){
+                echo '<a class="navbar-brand" href="index.php"><h1>'.$row['websitename'].'</h1></a>';
+              }else{
+                echo '<a class="navbar-brand" id="logo" href="index.php" ><img widt="100%" src="admin/images/'. $row['logo'] .'"></a>';
+              }
 
-                  }
-                }
-                ?>
-            </div>
-            <!-- /LOGO -->
+            }
+          }
+        ?>
+      <form class="search-post " action="search.php" method ="GET">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search .....">
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-danger">Search</button>
+            </span>
         </div>
+    </form>
+
+  </nav>
+        
     </div>
 </div>
 <!-- /HEADER -->
@@ -117,7 +125,7 @@
                   $active = "";
               ?>
                 <ul class='menu'>
-                  <li><a href='<?php echo $hostname; ?>'>Home</a></li>
+                  <li><a  href='<?php echo $hostname; ?>'>Home</a></li>
                   <?php while($row = mysqli_fetch_assoc($result)) {
                     if(isset($_GET['cid'])){
                       if($row['category_id'] == $cat_id){

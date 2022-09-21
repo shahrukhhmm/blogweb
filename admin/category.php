@@ -19,7 +19,7 @@
                   else{
                       $page = 1;
                   };
-                  $offset = ($page-1)* $limit;
+                  $offset = ($page-1) * $limit;
               /* select query with offset and limit */
               $sql = "SELECT * FROM  category ORDER BY category_id DESC Limit $offset,$limit";
               $result = mysqli_query($conn, $sql);
