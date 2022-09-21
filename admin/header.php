@@ -22,6 +22,8 @@
         <!-- Custom stlylesheet -->
         <link rel="stylesheet" href="../css/style.css">
         
+
+        <link rel="shortcut icon" href="images/smlogo.png" type="image/x-icon">
     </head>
     <body>
 

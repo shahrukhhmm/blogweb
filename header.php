@@ -57,7 +57,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="images/news.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="admin/images/smlogo.png" type="image/x-icon">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title><?php echo $page_title; ?></title>
     <!-- Bootstrap -->
